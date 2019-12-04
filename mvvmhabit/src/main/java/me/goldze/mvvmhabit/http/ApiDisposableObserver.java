@@ -3,7 +3,7 @@ package me.goldze.mvvmhabit.http;
 
 import io.reactivex.observers.DisposableObserver;
 import me.goldze.mvvmhabit.base.AppManager;
-import me.goldze.mvvmhabit.utils.KLog;
+import me.goldze.mvvmhabit.utils.LogUtils;
 import me.goldze.mvvmhabit.utils.ToastUtils;
 import me.goldze.mvvmhabit.utils.Utils;
 
@@ -38,7 +38,7 @@ public abstract class ApiDisposableObserver<T> extends DisposableObserver<T> {
         ToastUtils.showShort("http is start");
         // if  NetworkAvailable no !   must to call onCompleted
         if (!NetworkUtil.isNetworkAvailable(Utils.getContext())) {
-            KLog.d("无网络，读取缓存数据");
+            LogUtils.d("无网络，读取缓存数据");
             onComplete();
         }
     }
@@ -57,7 +57,7 @@ public abstract class ApiDisposableObserver<T> extends DisposableObserver<T> {
                 break;
             case CodeRule.CODE_300:
                 //请求失败，不打印Message
-                KLog.e("请求失败");
+                LogUtils.e("请求失败");
                 ToastUtils.showShort("错误代码:", baseResponse.getCode());
                 break;
             case CodeRule.CODE_330:
@@ -70,11 +70,11 @@ public abstract class ApiDisposableObserver<T> extends DisposableObserver<T> {
                 break;
             case CodeRule.CODE_503:
                 //参数为空
-                KLog.e("参数为空");
+                LogUtils.e("参数为空");
                 break;
             case CodeRule.CODE_502:
                 //没有数据
-                KLog.e("没有数据");
+                LogUtils.e("没有数据");
                 break;
             case CodeRule.CODE_510:
                 //无效的Token，提示跳入登录页
