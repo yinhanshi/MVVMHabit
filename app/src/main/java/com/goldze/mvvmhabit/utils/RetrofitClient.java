@@ -19,7 +19,7 @@ import me.goldze.mvvmhabit.http.interceptor.BaseInterceptor;
 import me.goldze.mvvmhabit.http.interceptor.CacheInterceptor;
 import me.goldze.mvvmhabit.http.interceptor.logging.Level;
 import me.goldze.mvvmhabit.http.interceptor.logging.LoggingInterceptor;
-import me.goldze.mvvmhabit.utils.KLog;
+import me.goldze.mvvmhabit.utils.LogUtils;
 import me.goldze.mvvmhabit.utils.Utils;
 import okhttp3.Cache;
 import okhttp3.ConnectionPool;
@@ -76,7 +76,7 @@ public class RetrofitClient {
                 cache = new Cache(httpCacheDirectory, CACHE_TIMEOUT);
             }
         } catch (Exception e) {
-            KLog.e("Could not create http cache", e);
+            LogUtils.e("Could not create http cache", e);
         }
         HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory();
         okHttpClient = new OkHttpClient.Builder()

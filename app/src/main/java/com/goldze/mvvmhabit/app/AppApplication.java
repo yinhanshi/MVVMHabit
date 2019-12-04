@@ -7,7 +7,7 @@ import com.squareup.leakcanary.LeakCanary;
 
 import me.goldze.mvvmhabit.base.BaseApplication;
 import me.goldze.mvvmhabit.crash.CaocConfig;
-import me.goldze.mvvmhabit.utils.KLog;
+import me.goldze.mvvmhabit.utils.LogUtils;
 
 /**
  * Created by goldze on 2017/7/16.
@@ -18,7 +18,7 @@ public class AppApplication extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         //是否开启打印日志
-        KLog.init(BuildConfig.DEBUG);
+        LogUtils.init(BuildConfig.DEBUG);
         //初始化全局异常崩溃
         initCrash();
         //内存泄漏检测
